@@ -12,19 +12,17 @@ const middleground = document.getElementById("middleground");
 const cursorPos = {x: null, y: null};
 const keys = [];
 let mouseDown = false;
-let readyToShoot = true;
 
 let player;
 let cursor;
 let timerBar;
 let ammoMenu;
 
-let outOfBounds = 200;
 let chanceOfSpawn = 1;
 
 App.start("square", ()=>{
     player = new Player(middleground.width/2 - (15/2), middleground.height/2 - (15/2));
-    player.setGun(new BurstSmg(player));
+    player.setGun(new Pistol(player));
 
     cursor = new Cursor();
 

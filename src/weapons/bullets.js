@@ -13,14 +13,8 @@ export class Bullet extends Rectangle{
 
         for (const key in data) this[key] = data[key];
         
-        this.pierceAmt = rand(0, data.pierceAmt);
         this.enemiesHit = 0;
         this.calcTarget();
-        
-        this.pullDir;
-        this.dragOffset = ((rand(0, (100 - this.range)) / 100) * 2) * randNeg(1);
-        if(Math.abs(this.vX) < Math.abs(this.vY)) this.pullDir = 'vert'
-        else this.pullDir = 'horz'
 
         Bullet.items.push(this);
 
@@ -41,6 +35,10 @@ export class Bullet extends Rectangle{
         this.active = true;
         this.isVisible = true;
         this.collidable = true;
+    }
+
+    duplicate(){
+
     }
     
     addDrag(){
@@ -70,6 +68,12 @@ export class Bullet extends Rectangle{
         vel = getDiagnalVelocity(this.getCenter(), this.target, this.maxVel);
         this.vX = vel.x;
         this.vY = vel.y;
+
+        this.pierceAmt = rand(0, this.data.pierceAmt);
+        this.pullDir;
+        this.dragOffset = ((rand(0, (100 - this.range)) / 100) * 2) * randNeg(1);
+        if(Math.abs(this.vX) < Math.abs(this.vY)) this.pullDir = 'vert'
+        else this.pullDir = 'horz'
     }
 }
 

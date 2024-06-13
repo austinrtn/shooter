@@ -63,6 +63,7 @@ export class Gun {
         }
 
         let bullet = new this.BulletType(this.player, cursorPos, this);
+        bullet.activate();
         App.createItems(bullet);
         this.ammo--;
 
@@ -100,7 +101,7 @@ export class Pistol extends Gun {
     constructor(player) {
         super(player, PistolBullet, {
             accuracy: 90,
-            range:80,
+            range:100,
             magSize:9,
             rateOfFire:250,
             reloadDelay:1000,
